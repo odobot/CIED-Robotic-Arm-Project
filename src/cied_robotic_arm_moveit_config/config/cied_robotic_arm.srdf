@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="cied_robotic_arm">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="cied_arm">
+        <joint name="Revolute1"/>
+        <joint name="Revolute2"/>
+        <joint name="Revolute3"/>
+        <joint name="Revolute4"/>
+        <joint name="Revolute5"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="zero_pose" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="R1" group="cied_arm">
+        <joint name="Revolute1" value="1.571"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="R2" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="1.571"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="R3" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="1.571"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="R4" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="1.571"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="R5" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="1.571"/>
+    </group_state>
+
+    <group_state name="_R1" group="cied_arm">
+        <joint name="Revolute1" value="-1.571"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="_R2" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="-1.571"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="_R3" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="-1.571"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="_R4" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="-1.571"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+
+    <group_state name="_R5" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0"/>
+        <joint name="Revolute3" value="0"/>
+        <joint name="Revolute4" value="0"/>
+        <joint name="Revolute5" value="-1.571"/>
+    </group_state>
+
+    <group_state name="scooping_pose" group="cied_arm">
+        <joint name="Revolute1" value="0"/>
+        <joint name="Revolute2" value="0.9893"/>
+        <joint name="Revolute3" value="-1.1978"/>
+        <joint name="Revolute4" value="0.5729"/>
+        <joint name="Revolute5" value="0"/>
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="LD260M_ROTATING_COUPLING-v6" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="LD260M_ROTATING_COUPLING-v6_2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="LD260M_Static_Coupling-v5_2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Link-3-v2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Link-4-v2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Link2_50mm_wrist2_to_wrist1-v3" reason="Adjacent"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Scoopy_sheetMetal-v2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Star_horn-v2" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Adjacent"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="220MG_SERVO_CHANGED-v1" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="BASE_CONVERTED_EDITED-v6-v1" link2="LD260M_ROTATING_COUPLING-v6" reason="Never"/>
+    <disable_collisions link1="BASE_CONVERTED_EDITED-v6-v1" link2="LD260M_Static_Coupling-v5" reason="Never"/>
+    <disable_collisions link1="BASE_CONVERTED_EDITED-v6-v1" link2="SHOULDER-v4-v4" reason="Adjacent"/>
+    <disable_collisions link1="BASE_CONVERTED_EDITED-v6-v1" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="BASE_CONVERTED_EDITED-v6-v1" link2="ld-260mg-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="LD260M_ROTATING_COUPLING-v6_2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="LD260M_Static_Coupling-v5_2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="Link-3-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="Link-4-v2" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="SHOULDER-v4-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="base_link" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="ld-260mg-v4" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="LD260M_Static_Coupling-v5" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Link-3-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Link-4-v2" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Link2_50mm_wrist2_to_wrist1-v3" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="SHOULDER-v4-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Star_horn-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="WRIST_SERVO_-LD-20M__Servo-20kg-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="ld-260mg-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_ROTATING_COUPLING-v6_2" link2="ld-260mg-v4_2" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5" link2="LD260M_Static_Coupling-v5_2" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5" link2="SHOULDER-v4-v4" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5" link2="base_link" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5" link2="ld-260mg-v4" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="Link-3-v2" reason="Adjacent"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="Link2_50mm_wrist2_to_wrist1-v3" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="SHOULDER-v4-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="Star_horn-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="WRIST_SERVO_-LD-20M__Servo-20kg-v2" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="ld-260mg-v4" reason="Never"/>
+    <disable_collisions link1="LD260M_Static_Coupling-v5_2" link2="ld-260mg-v4_2" reason="Adjacent"/>
+    <disable_collisions link1="Link-3-v2" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Adjacent"/>
+    <disable_collisions link1="Link-3-v2" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="Link-4-v2" link2="base_link" reason="Never"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="Scoopy_sheetMetal-v2" reason="Never"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="Star_horn-v2" reason="Never"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="WRIST_SERVO_-LD-20M__Servo-20kg-v2" reason="Adjacent"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Never"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="Link2_50mm_wrist2_to_wrist1-v3" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="SHOULDER-v4-v4" link2="base_link" reason="Never"/>
+    <disable_collisions link1="SHOULDER-v4-v4" link2="ld-260mg-v4" reason="Never"/>
+    <disable_collisions link1="SHOULDER-v4-v4" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="Scoopy_sheetMetal-v2" link2="Star_horn-v2" reason="Never"/>
+    <disable_collisions link1="Scoopy_sheetMetal-v2" link2="WRIST_SERVO_-LD-20M__Servo-20kg-v2" reason="Never"/>
+    <disable_collisions link1="Scoopy_sheetMetal-v2" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Never"/>
+    <disable_collisions link1="Scoopy_sheetMetal-v2" link2="Wrist2Scooplinker-v5" reason="Adjacent"/>
+    <disable_collisions link1="Star_horn-v2" link2="WRIST_SERVO_-LD-20M__Servo-20kg-v2" reason="Adjacent"/>
+    <disable_collisions link1="Star_horn-v2" link2="Wrist1servo_to_Link3_servo_Coupling-v6" reason="Never"/>
+    <disable_collisions link1="Star_horn-v2" link2="Wrist2Scooplinker-v5" reason="Adjacent"/>
+    <disable_collisions link1="Star_horn-v2" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="WRIST_SERVO_-LD-20M__Servo-20kg-v2" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="WRIST_SERVO_-LD-20M__Servo-20kg-v2" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="Wrist1servo_to_Link3_servo_Coupling-v6" link2="Wrist2Scooplinker-v5" reason="Never"/>
+    <disable_collisions link1="Wrist1servo_to_Link3_servo_Coupling-v6" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="Wrist2Scooplinker-v5" link2="ld-260mg-v4_2" reason="Never"/>
+    <disable_collisions link1="base_link" link2="ld-260mg-v4" reason="Never"/>
+    <disable_collisions link1="ld-260mg-v4" link2="ld-260mg-v4_2" reason="Never"/>
+</robot>

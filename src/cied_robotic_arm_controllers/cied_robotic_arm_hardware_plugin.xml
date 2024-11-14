@@ -1,0 +1,12 @@
+<library path="cied_robotic_arm_controllers">
+    <class name= "cied_robotic_arm_hardware/CIEDRoboticArm"
+           type = "cied_robotic_arm_hardware::CIEDRoboticArm"
+           base_class = "hardware_interface/SystemInterface"
+           base_class_type = "hardware_interface::SystemInterface">
+    </class>
+
+    <description>
+        This is a ROS2 plugin node that interfaces with the CIED Robotic Arm.
+    </description>
+
+</library>

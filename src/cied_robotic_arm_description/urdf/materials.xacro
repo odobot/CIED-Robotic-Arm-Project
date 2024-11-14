@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<robot name="robotic" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<material name="cied_robotic_arm">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+<material name="opaque160160160">
+  <color rgba="0.6274509803921569 0.6274509803921569 0.6274509803921569 1.0"/>
+</material>
+<material name="aluminum_satin">
+  <color rgba="0.9607843137254902 0.9607843137254902 0.9647058823529412 1.0"/>
+</material>
+<material name="plastic_glossy_black">
+  <color rgba="0.09803921568627451 0.09803921568627451 0.09803921568627451 1.0"/>
+</material>
+<material name="opaque138138138">
+  <color rgba="0.5411764705882353 0.5411764705882353 0.5411764705882353 1.0"/>
+</material>
+<material name="plastic_glossy_grey">
+  <color rgba="0.7019607843137254 0.7019607843137254 0.7019607843137254 1.0"/>
+</material>
+
+</robot>

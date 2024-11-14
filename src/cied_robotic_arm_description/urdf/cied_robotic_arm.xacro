@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="cied_robotic_arm">
+
+
+  <xacro:arg name="is_sim" default="true"/>
+
+  <xacro:property name="PI" value="1.57079632679"/>
+  <xacro:property name="velocity" value="30.0"/>
+  <xacro:property name="effort" value="10.0"/>
+
+  <xacro:include filename="$(find cied_robotic_arm_description)/urdf/cied_robotic_arm.ros2_control.xacro"/>
+
+  <link name="world"/>
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+  
+  
+  <link name="BASE_CONVERTED_EDITED-v6-v1">
+    <inertial>
+      <origin xyz="-0.04938015728291417 -5.657032001121962e-08 0.051695821493360765" rpy="0.0 -0.0 0.0" />
+      <mass value="0.24960671310222884" />
+      <inertia ixx="0.000330009443583525" iyy="0.00032926072867694436" izz="0.0005918726705723311" ixy="-4.291292584903516e-08" iyz="6.723377398873494e-11" ixz="7.02263810806836e-07" />
+    </inertial>
+    <visual name="BASE_CONVERTED_EDITED-v6-v1_visual">
+      <origin xyz="-0.050213549999999996 0.0 -0.0030970999999999985" rpy="0.0 -0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/BASE_CONVERTED_EDITED-v6-v1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="BASE_CONVERTED_EDITED-v6-v1_collision">
+      <origin xyz="-0.050213549999999996 0.0 -0.0030970999999999985" rpy="0.0 -0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/BASE_CONVERTED_EDITED-v6-v1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+<link name="SHOULDER-v4-v4">
+    <inertial>
+      <origin xyz="1.979243414011657e-05 5.609887684809241e-05 0.011999996791605847" rpy="0.0 -0.0 0.0" />
+      <mass value="0.040005452205779446" />
+      <inertia ixx="1.810057795269496e-05" iyy="1.787822625517511e-05" izz="3.3318440170903614e-05" ixy="1.1661267440260334e-09" iyz="2.1721744859722598e-14" ixz="-5.227815481994956e-11" />
+    </inertial>
+    <visual name="SHOULDER-v4-v4_visual">
+      <origin xyz="-0.000713546282476282 -3.908276670176736e-09 0.0054999954122925045" rpy="-2.2576979285743625e-14 4.0748348515784114e-16 3.141592653589793" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/SHOULDER-v4-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="SHOULDER-v4-v4_collision">
+      <origin xyz="-0.000713546282476282 -3.908276670176736e-09 0.0054999954122925045" rpy="-2.2576979285743625e-14 4.0748348515784114e-16 3.141592653589793" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/SHOULDER-v4-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+   
+  <link name="LD260M_Static_Coupling-v5">
+    <inertial>
+      <origin xyz="2.699705515623839e-06 3.90825996229166e-09 -0.009675397713086316" rpy="0.0 -0.0 0.0" />
+      <mass value="0.016191747656046702" />
+      <inertia ixx="8.95144560154117e-06" iyy="3.3481663987236667e-06" izz="8.40281845351545e-06" ixy="3.3570381990383038e-21" iyz="2.3871770733790336e-18" ixz="7.767405189017513e-10" />
+    </inertial>
+    <visual name="LD260M_Static_Coupling-v5_visual">
+      <origin xyz="3.749790996681289e-09 3.908278122764786e-09 1.4882659371551199e-09" rpy="3.141592653589793 6.314057571722318e-16 -1.5707963267948966" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_Static_Coupling-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="LD260M_Static_Coupling-v5_collision">
+      <origin xyz="3.749790996681289e-09 3.908278122764786e-09 1.4882659371551199e-09" rpy="3.141592653589793 6.314057571722318e-16 -1.5707963267948966" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_Static_Coupling-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+   
+  <link name="ld-260mg-v4">
+    <inertial>
+      <origin xyz="0.030589021607647284 -0.02400470998940149 0.01199999662200519" rpy="1.5192908393215678e-64 -0.0 0.0" />
+      <mass value="0.17032047096430222" />
+      <inertia ixx="5.020845426118051e-05" iyy="7.301170731051874e-05" izz="9.832237321419617e-05" ixy="1.4744841831574142e-09" iyz="-3.197693098516415e-19" ixz="-2.6983293325969805e-19" />
+    </inertial>
+    <visual name="ld-260mg-v4_visual">
+      <origin xyz="0.03699999851173838 3.908276982045323e-09 0.011370500256877058" rpy="1.5707963267948966 1.1396007199410897e-17 -4.1893325713319993e-16" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/ld-260mg-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="ld-260mg-v4_collision">
+      <origin xyz="0.03699999851173838 3.908276982045323e-09 0.011370500256877058" rpy="1.5707963267948966 1.1396007199410897e-17 -4.1893325713319993e-16" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/ld-260mg-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+  
+  <link name="LD260M_ROTATING_COUPLING-v6">
+    <inertial>
+      <origin xyz="7.013478893472749e-05 -0.03075000390828834 0.02446329499094343" rpy="0.0 -0.0 0.0" />
+      <mass value="0.020572903371824908" />
+      <inertia ixx="1.7088262568710545e-05" iyy="4.495702909559419e-06" izz="1.5898542932403438e-05" ixy="5.405702851216466e-21" iyz="2.596367741571244e-18" ixz="2.049413735630734e-09" />
+    </inertial>
+    <visual name="LD260M_ROTATING_COUPLING-v6_visual">
+      <origin xyz="6.585130943322002e-05 -0.030750003908274846 0.03500238211453896" rpy="-3.141592653589793 -4.787736410355276e-16 -1.5707963267948968" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_ROTATING_COUPLING-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="LD260M_ROTATING_COUPLING-v6_collision">
+      <origin xyz="6.585130943322002e-05 -0.030750003908274846 0.03500238211453896" rpy="-3.141592653589793 -4.787736410355276e-16 -1.5707963267948968" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_ROTATING_COUPLING-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+  
+  <link name="Link-4-v2">
+    <inertial>
+      <origin xyz="1.3094332452015523e-09 3.908274888130004e-09 -0.04000000211453898" rpy="0.0 -0.0 0.0" />
+      <mass value="0.0493840417317038" />
+      <inertia ixx="2.8895698112982055e-05" iyy="2.8895698113083103e-05" izz="5.992820904315784e-06" ixy="-1.0743818842532749e-18" iyz="1.0587911840678754e-20" ixz="2.0117032497289633e-21" />
+    </inertial>
+    <visual name="Link-4-v2_visual">
+      <origin xyz="1.3094332479424154e-09 3.908274890870867e-09 -0.04000000211453898" rpy="-3.1415926535897927 -1.424239869492334e-16 3.141592653589793" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link-4-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Link-4-v2_collision">
+      <origin xyz="1.3094332479424154e-09 3.908274890870867e-09 -0.04000000211453898" rpy="-3.1415926535897927 -1.424239869492334e-16 3.141592653589793" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link-4-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link name="LD260M_ROTATING_COUPLING-v6_2">
+    <inertial>
+      <origin xyz="-4.282170068265235e-06 -3.908288360148643e-09 0.01053908923813534" rpy="0.0 -0.0 0.0" />
+      <mass value="0.020572903371824908" />
+      <inertia ixx="1.7088262568712388e-05" iyy="4.495702909559094e-06" izz="1.58985429324058e-05" ixy="1.3882106931382902e-20" iyz="-2.587368016506667e-18" ixz="2.049413735210447e-09" />
+    </inertial>
+    <visual name="LD260M_ROTATING_COUPLING-v6_visual">
+      <origin xyz="1.3094332425647726e-09 -3.9082748716154355e-09 2.1145389794696714e-09" rpy="-2.1558170219232416e-14 -7.426145760999054e-16 -1.5707963267948994" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_ROTATING_COUPLING-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="LD260M_ROTATING_COUPLING-v6_collision">
+      <origin xyz="1.3094332425647726e-09 -3.9082748716154355e-09 2.1145389794696714e-09" rpy="-2.1558170219232416e-14 -7.426145760999054e-16 -1.5707963267948994" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_ROTATING_COUPLING-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="ld-260mg-v4_2">
+    <inertial>
+      <origin xyz="0.019410972621429465 0.03075471780594978 -4.003138724274075e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.17032047096430222" />
+      <inertia ixx="5.020845426114139e-05" iyy="7.30117073105066e-05" izz="9.832237321417622e-05" ixy="1.4744841829515852e-09" iyz="6.897569614865304e-19" ixz="2.7113524641610154e-18" />
+    </inertial>
+    <visual name="ld-260mg-v4_visual">
+      <origin xyz="0.012999995717339594 0.006750003908273321 -0.000629500368266719" rpy="1.5707963267948994 -1.734723475976931e-17 3.1415926535897913" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/ld-260mg-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="ld-260mg-v4_collision">
+      <origin xyz="0.012999995717339594 0.006750003908273321 -0.000629500368266719" rpy="1.5707963267948994 -1.734723475976931e-17 3.1415926535897913" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/ld-260mg-v4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="LD260M_Static_Coupling-v5_2">
+    <inertial>
+      <origin xyz="0.012000119080372936 0.02400000390829026 -0.0008245965159843394" rpy="0.0 -0.0 0.0" />
+      <mass value="0.016191747656046702" />
+      <inertia ixx="8.951445601541657e-06" iyy="3.3481663987244663e-06" izz="8.402818453515487e-06" ixy="1.8571342125157732e-20" iyz="2.3964679660192292e-18" ixz="-7.767405188795365e-10" />
+    </inertial>
+    <visual name="LD260M_Static_Coupling-v5_visual">
+      <origin xyz="0.011997423124648311 0.024000003908272092 -0.010499995717336575" rpy="-2.1085563850498035e-15 -3.6760471486577964e-16 1.5707963267948994" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_Static_Coupling-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="LD260M_Static_Coupling-v5_collision">
+      <origin xyz="0.011997423124648311 0.024000003908272092 -0.010499995717336575" rpy="-2.1085563850498035e-15 -3.6760471486577964e-16 1.5707963267948994" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/LD260M_Static_Coupling-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Link-3-v2">
+    <inertial>
+      <origin xyz="3.1246929910883072e-09 3.908272083325004e-09 -0.02317682828014121" rpy="0.0 -0.0 -1.5192908393215678e-64" />
+      <mass value="0.022397647542727356" />
+      <inertia ixx="5.961670430650306e-06" iyy="5.961670431988211e-06" izz="2.1633129744167147e-06" ixy="-1.0403580845025906e-18" iyz="1.376428539288238e-20" ixz="1.4378596037878562e-17" />
+    </inertial>
+    <visual name="Link-3-v2_visual">
+      <origin xyz="3.124648311793321e-09 3.908272089951647e-09 4.2826633972481434e-09" rpy="3.1415926535897927 2.3313150927750737e-15 -3.1415926535897882" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link-3-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Link-3-v2_collision">
+      <origin xyz="3.124648311793321e-09 3.908272089951647e-09 4.2826633972481434e-09" rpy="3.1415926535897927 2.3313150927750737e-15 -3.1415926535897882" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link-3-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Wrist1servo_to_Link3_servo_Coupling-v6">
+    <inertial>
+      <origin xyz="3.124645056550024e-09 3.908293039339705e-09 -0.009684445898262126" rpy="0.0 -0.0 0.0" />
+      <mass value="0.009889944657493504" />
+      <inertia ixx="4.090244994843853e-06" iyy="1.2438506923880075e-06" izz="3.5178933641127882e-06" ixy="1.314617468015213e-20" iyz="-1.7368939979041462e-18" ixz="-2.760268616864951e-19" />
+    </inertial>
+    <visual name="Wrist1servo_to_Link3_servo_Coupling-v6_visual">
+      <origin xyz="3.124648310752487e-09 3.908272069134966e-09 4.282663539356691e-09" rpy="-3.141592653589793 4.162451083849467e-16 1.5707963267949014" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Wrist1servo_to_Link3_servo_Coupling-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Wrist1servo_to_Link3_servo_Coupling-v6_collision">
+      <origin xyz="3.124648310752487e-09 3.908272069134966e-09 4.282663539356691e-09" rpy="-3.141592653589793 4.162451083849467e-16 1.5707963267949014" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Wrist1servo_to_Link3_servo_Coupling-v6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="220MG_SERVO_CHANGED-v1">
+    <inertial>
+      <origin xyz="0.01750466156140206 -0.01978175693502161 -0.007500003124648311" rpy="-5.397605346934029e-79 -0.0 0.0" />
+      <mass value="0.25235167952814613" />
+      <inertia ixx="4.285769822184116e-05" iyy="4.129166685424429e-05" izz="6.751804831904573e-05" ixy="-3.7549444242090253e-07" iyz="4.536786281577916e-19" ixz="-1.4539111612200497e-19" />
+    </inertial>
+    <visual name="220MG_SERVO_CHANGED-v1_visual">
+      <origin xyz="0.017369995717336266 -3.90827274543426e-09 -0.007500003124648404" rpy="1.570796326794892 -1.9949319973733664e-17 1.7289064228636335e-15" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/220MG_SERVO_CHANGED-v1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="220MG_SERVO_CHANGED-v1_collision">
+      <origin xyz="0.017369995717336266 -3.90827274543426e-09 -0.007500003124648404" rpy="1.570796326794892 -1.9949319973733664e-17 1.7289064228636335e-15" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/220MG_SERVO_CHANGED-v1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Link2_50mm_wrist2_to_wrist1-v3">
+    <inertial>
+      <origin xyz="0.0022578914124223694 0.025750003917791923 -0.032822101468734176" rpy="0.0 -0.0 1.7581823911077792e-63" />
+      <mass value="0.027364975721576753" />
+      <inertia ixx="2.3420126528716882e-05" iyy="1.32489239595239e-05" izz="2.0034765736280334e-05" ixy="-3.670917422720498e-15" iyz="4.2148403924603716e-15" ixz="9.990815722341986e-07" />
+    </inertial>
+    <visual name="Link2_50mm_wrist2_to_wrist1-v3_visual">
+      <origin xyz="0.009600003124648315 0.025750003833766483 -0.047999995717336506" rpy="-3.1415926535897913 -2.294666630423304e-15 -1.5707963267948917" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link2_50mm_wrist2_to_wrist1-v3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Link2_50mm_wrist2_to_wrist1-v3_collision">
+      <origin xyz="0.009600003124648315 0.025750003833766483 -0.047999995717336506" rpy="-3.1415926535897913 -2.294666630423304e-15 -1.5707963267948917" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Link2_50mm_wrist2_to_wrist1-v3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="WRIST_SERVO_-LD-20M__Servo-20kg-v2">
+    <inertial>
+      <origin xyz="0.024964511574029062 0.005000018784715795 0.008060598454641195" rpy="0.0 -0.0 0.0" />
+      <mass value="0.056568095644142974" />
+      <inertia ixx="9.281777910086914e-06" iyy="1.5339641009803895e-05" izz="9.764275031709694e-06" ixy="-5.8205532880645e-12" iyz="1.6941914312288342e-11" ixz="-9.878521895363137e-08" />
+    </inertial>
+    <visual name="WRIST_SERVO_-LD-20M__Servo-20kg-v2_visual">
+      <origin xyz="0.025050003208418558 0.005000003908272424 0.028350004282663266" rpy="-1.5707963267948957 3.702409813282789e-15 -3.14159265358979" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/WRIST_SERVO_-LD-20M__Servo-20kg-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="WRIST_SERVO_-LD-20M__Servo-20kg-v2_collision">
+      <origin xyz="0.025050003208418558 0.005000003908272424 0.028350004282663266" rpy="-1.5707963267948957 3.702409813282789e-15 -3.14159265358979" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/WRIST_SERVO_-LD-20M__Servo-20kg-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Star_horn-v2">
+    <inertial>
+      <origin xyz="3.2087687826254376e-09 -0.0006819656174591415 -3.90827209439254e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.0007686055015882889" />
+      <inertia ixx="3.2204997207701484e-08" iyy="6.286944291521781e-08" izz="3.220499684324692e-08" ixy="-3.847514814004651e-19" iyz="-4.367513634279985e-22" ixz="4.60188685979379e-22" />
+    </inertial>
+    <visual name="Star_horn-v2_visual">
+      <origin xyz="3.2084185397178446e-09 0.0030000042826630138 -3.90827219852799e-09" rpy="1.5707963267948923 3.4659775050016898e-15 1.7447429808086588e-15" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Star_horn-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Star_horn-v2_collision">
+      <origin xyz="3.2084185397178446e-09 0.0030000042826630138 -3.90827219852799e-09" rpy="1.5707963267948923 3.4659775050016898e-15 1.7447429808086588e-15" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Star_horn-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Wrist2Scooplinker-v5">
+    <inertial>
+      <origin xyz="-1.546660854116748e-05 -2.6798417233066252e-05 0.009080727488994427" rpy="-1.0947644252537633e-47 -0.0 0.0" />
+      <mass value="0.01556014427070851" />
+      <inertia ixx="1.7731708424140523e-06" iyy="1.7718589630164035e-06" izz="2.6411441042266464e-06" ixy="-1.1361208010700862e-09" iyz="-4.619849885311562e-09" ixz="-2.6672715742391673e-09" />
+    </inertial>
+    <visual name="Wrist2Scooplinker-v5_visual">
+      <origin xyz="3.2084185500567962e-09 -3.908272100845711e-09 0.016999995717337058" rpy="-1.943309007827419e-15 -1.8823837106935343e-15 -1.0471975511966067" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Wrist2Scooplinker-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Wrist2Scooplinker-v5_collision">
+      <origin xyz="3.2084185500567962e-09 -3.908272100845711e-09 0.016999995717337058" rpy="-1.943309007827419e-15 -1.8823837106935343e-15 -1.0471975511966067" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Wrist2Scooplinker-v5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Scoopy_sheetMetal-v2">
+    <inertial>
+      <origin xyz="-0.00974682242486506 -3.908272444425043e-09 0.030973145408579157" rpy="0.0 -0.0 0.0" />
+      <mass value="0.04777748013833138" />
+      <inertia ixx="5.5176956185808146e-05" iyy="3.9863750555070576e-05" izz="2.6391517986082936e-05" ixy="1.7279170051352777e-19" iyz="-1.0698094734022313e-18" ixz="1.2359714936081454e-07" />
+    </inertial>
+    <visual name="Scoopy_sheetMetal-v2_visual">
+      <origin xyz="-0.014239392491811316 -3.908271734506808e-09 0.053190774340914404" rpy="1.919862177193766 4.437951298824676e-15 1.5707963267948877" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Scoopy_sheetMetal-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Scoopy_sheetMetal-v2_collision">
+      <origin xyz="-0.014239392491811316 -3.908271734506808e-09 0.053190774340914404" rpy="1.919862177193766 4.437951298824676e-15 1.5707963267948877" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/Scoopy_sheetMetal-v2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-1.7860712908657207e-16 -1.6672427327613093e-16 0.029990265082941878" rpy="0.0 0.0 0.0" />
+      <mass value="1.020568380561133" />
+      <inertia ixx="0.011300786346274697" iyy="0.0060619492152825805" izz="0.01597711789402057" ixy="-5.138882716542836e-18" iyz="-5.764059206065514e-19" ixz="-2.520770051028798e-18" />
+    </inertial>
+    <visual name="base_link-v1_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/BASE_ASSEMBLY_v7.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="base_link-v1_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cied_robotic_arm_description/meshes/BASE_ASSEMBLY_v7.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="link_tcp"/>
+  
+  <joint name="Revolute1" type="revolute">
+    <origin xyz="-0.04970247 -0.00011195 0.05075521" rpy="0.0 -0.0 0.0" />
+    <parent link="BASE_CONVERTED_EDITED-v6-v1" />
+    <child link="SHOULDER-v4-v4" />
+    <axis xyz="0.0 0.0 1.0" />
+    <limit effort="${effort}" lower="-${PI}" upper="${PI}" velocity="${velocity}"/>
+  </joint>
+
+  <joint name="SHOULDER-v4-v4_Rigid-2" type="fixed">
+    <origin xyz="-0.00049955 0.0 0.018499999999999996" rpy="3.141592653589793 -0.0 4.586277208776367e-33" />
+    <parent link="SHOULDER-v4-v4" />
+    <child link="LD260M_Static_Coupling-v5" />
+  </joint>
+
+  <joint name="LD260M_Static_Coupling-v5_Rigid-3" type="fixed">
+    <origin xyz="-0.011997419999999998 0.024000000000000004 -0.010499999999999999" rpy="1.2870121524895266e-32 1.5707963267948966 0" />
+    <parent link="LD260M_Static_Coupling-v5" />
+    <child link="ld-260mg-v4" />
+  </joint>
+  
+  <joint name="Revolute2" type="continuous">
+    <origin xyz="0.05000000000000001 -0.05475 0.012" rpy="3.141592653589793 -1.5707963267948966 0" />
+    <parent link="ld-260mg-v4" />
+    <child link="LD260M_ROTATING_COUPLING-v6" />
+    <axis xyz="0.0 1.0 6.869346616982636e-33" />
+    <limit effort="${effort}" lower="-${PI}" upper="${PI}" velocity="${velocity}"/>
+  </joint>
+
+  <joint name="LD260M_ROTATING_COUPLING-v6_Rigid-4" type="fixed">
+    <origin xyz="6.585e-05 -0.03075 0.03500237999999998" rpy="3.141592653589793 4.930380657631324e-32 -1.5478303656778243e-32" />
+    <parent link="LD260M_ROTATING_COUPLING-v6" />
+    <child link="Link-4-v2" />
+  </joint>
+
+  <joint name="Link-4-v2_Rigid-5" type="fixed">
+    <origin xyz="0.0 0.0 -0.08" rpy="3.141592653589793 2.465190328815662e-32 -1.5200577870480245e-32" />
+    <parent link="Link-4-v2" />
+    <child link="LD260M_ROTATING_COUPLING-v6_2" />
+  </joint>
+
+  <joint name="Revolute3" type="revolute">
+    <origin xyz="6.586e-05 0.03075 0.03500239000000001" rpy="-3.141592653589793 -1.5707963267948966 0" />
+    <parent link="LD260M_ROTATING_COUPLING-v6_2" />
+    <child link="ld-260mg-v4_2" />
+    <axis xyz="2.465190328815662e-32 1.0 -1.029934691332339e-31" />
+    <limit effort="${effort}" lower="-${PI}" upper="${PI}" velocity="${velocity}"/>
+  </joint>
+
+  <joint name="ld-260mg-v4_Rigid-6" type="fixed">
+    <origin xyz="0.05000000000000004 0.006749999999999998 -0.012000000000000002" rpy="-4.319644532628241e-31 -1.5707963267948966 0" />
+    <parent link="ld-260mg-v4_2" />
+    <child link="LD260M_Static_Coupling-v5_2" />
+  </joint>
+
+  <joint name="LD260M_Static_Coupling-v5_Rigid-7" type="fixed">
+    <origin xyz="0.011997420000000002 0.024 -0.010499999999999971" rpy="-3.8520506566151146e-31 -4.930380657631324e-32 -4.01445070426838e-31" />
+    <parent link="LD260M_Static_Coupling-v5_2" />
+    <child link="Link-3-v2" />
+  </joint>
+
+  <joint name="Link-3-v2_Rigid-8" type="fixed">
+    <origin xyz="0.0 0.0 -0.05" rpy="-2.330949293219734e-62 4.930380657631324e-32 2.1979276005198175e-31" />
+    <parent link="Link-3-v2" />
+    <child link="Wrist1servo_to_Link3_servo_Coupling-v6" />
+  </joint>
+
+  <joint name="Wrist1servo_to_Link3_servo_Coupling-v6_Rigid-9" type="fixed">
+    <origin xyz="-0.0075 -0.02 -0.0125" rpy="3.141592653589793 1.5707963267948966 0" />
+    <parent link="Wrist1servo_to_Link3_servo_Coupling-v6" />
+    <child link="220MG_SERVO_CHANGED-v1" />
+  </joint>
+
+  <joint name="Revolute4" type="revolute">
+    <origin xyz="0.02724000000000004 0.006000000000000001 -0.007499999999999999" rpy="-3.141592653589793 1.5707963267948963 0" />
+    <parent link="220MG_SERVO_CHANGED-v1" />
+    <child link="Link2_50mm_wrist2_to_wrist1-v3" />
+    <axis xyz="3.0814879110195774e-33 -1.0 8.91504385359392e-33" />
+    <limit effort="${effort}" lower="-${PI}" upper="${PI}" velocity="${velocity}"/>
+  </joint>
+
+  <joint name="Link2_50mm_wrist2_to_wrist1-v3_Rigid-10" type="fixed">
+    <origin xyz="-0.015149999999999999 0.020749999999999998 -0.05" rpy="2.6092818667725115e-31 1.9721522630525295e-31 -7.220896241366683e-31" />
+    <parent link="Link2_50mm_wrist2_to_wrist1-v3" />
+    <child link="WRIST_SERVO_-LD-20M__Servo-20kg-v2" />
+  </joint>
+
+  <joint name="Revolute5" type="revolute">
+    <origin xyz="0.0151 0.004999999999999999 -0.017299999999999968" rpy="1.5707963267948966 -1.09072112710782e-31 7.251711120476879e-31" />
+    <parent link="WRIST_SERVO_-LD-20M__Servo-20kg-v2" />
+    <child link="Star_horn-v2" />
+    <axis xyz="-1.09072112710782e-31 -1.0 -7.888609052210118e-31" />
+    <limit effort="${effort}" lower="-${PI}" upper="${PI}" velocity="${velocity}"/>
+  </joint>
+
+  <joint name="Star_horn-v2_Rigid-11" type="fixed">
+    <origin xyz="0.0 -0.0020000000000000287 0.0" rpy="1.5707963267948966 -5.449011842358893e-31 -1.09072112710782e-31" />
+    <parent link="Star_horn-v2" />
+    <child link="Wrist2Scooplinker-v5" />
+  </joint>
+
+  <joint name="Wrist2Scooplinker-v5_Rigid-36" type="fixed">
+    <origin xyz="0.0 -1.734723475976807e-20 0.016999999999999956" rpy="-2.9582283945787943e-31 -5.4738221262683506e-48 5.55111512312531e-17" />
+    <parent link="Wrist2Scooplinker-v5" />
+    <child link="Scoopy_sheetMetal-v2" />
+  </joint> 
+
+  <joint name="base_link-v1_Rigid-1" type="fixed">
+    <origin xyz="0.04950035154218169 -0.00012255167345699824 0.060000004510498056" rpy="0.0 -0.0 0.0" />
+    <parent link="base_link" />
+    <child link="BASE_CONVERTED_EDITED-v6-v1" />
+  </joint>
+
+  <joint name="tcp_joint" type="fixed">
+    <parent link="Scoopy_sheetMetal-v2"/>
+    <child link="link_tcp"/>
+    <origin xyz="0.0 0.0 0.08" rpy="0.0 0.0 0.0"/>
+  </joint>
+  
+  
+</robot>

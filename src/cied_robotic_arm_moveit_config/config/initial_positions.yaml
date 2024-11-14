@@ -1,0 +1,8 @@
+# Default initial positions for cied_robotic_arm's ros2_control fake system
+
+initial_positions:
+  Revolute1: 0
+  Revolute2: 0
+  Revolute3: 0
+  Revolute4: 0
+  Revolute5: 0

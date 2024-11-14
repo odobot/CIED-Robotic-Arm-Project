@@ -1,0 +1,28 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 60
+
+    # Robot arm controller
+    cied_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # Joint state broadcaster - Dafult controller
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+cied_arm_controller:
+  ros__parameters:
+    joints:
+      - Revolute1
+      - Revolute2
+      - Revolute3
+      - Revolute4
+      - Revolute5
+
+    command_interfaces:
+      - position
+        
+    state_interfaces:
+      - position
+
